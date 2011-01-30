@@ -4,58 +4,58 @@ about SNBinder
 
 .. SNBinder is a client-side template engine implemented in JavaScript. Just like server-side template engines, 
 ..it binds a view (HTML template) to a data (JavaScript object) and generate an HTML text. 
-SNBinder ¤ÏJavaScript¤Ç¼ÂÁõ¤µ¤ì¤¿¥¯¥é¥¤¥¢¥ó¥È¥µ¥¤¥É¤Î¥Æ¥ó¥×¥ì¡¼¥È¥¨¥ó¥¸¥ó¤Ç¤¹¡£¥µ¡¼¥Ğ¡¼¥µ¥¤¥É¤Î¥Æ¥ó¥×¥ì¡¼¥È¥¨¥ó¥¸¥ó¤È»÷¤Æ¤¤¤Ş¤¹¡£view(HTML template)¤¬¥Ç¡¼¥¿¤òÍÑ¤¤¤ÆHTML txet¤òÀ¸À®¤·¤Ş¤¹¡£
+SNBinder ã¯JavaScriptã§å®Ÿè£…ã•ã‚ŒãŸã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚µã‚¤ãƒ‰ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚¨ãƒ³ã‚¸ãƒ³ã§ã™ã€‚ã‚µãƒ¼ãƒãƒ¼ã‚µã‚¤ãƒ‰ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚¨ãƒ³ã‚¸ãƒ³ã¨ä¼¼ã¦ã„ã¾ã™ã€‚view(HTML template)ãŒãƒ‡ãƒ¼ã‚¿ã‚’ç”¨ã„ã¦HTML txetã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 
 .. 0. Design Principle and Sample Application
-..0. ¥Ç¥¶¥¤¥ó¸¶Íı¤È¥µ¥ó¥×¥ë¥¢¥×¥ê¥±¡¼¥·¥ç¥ó
+..0. ãƒ‡ã‚¶ã‚¤ãƒ³åŸç†ã¨ã‚µãƒ³ãƒ—ãƒ«ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³
 ------------------------------------------------------
 
 .. I developed SNBinder with a belief that the client-side data-binding gives a great flexibility to developers who want to offer a "desktop-application-like" user experience. Read the following article if you are interested in the architecture behind this effort. 
 
-SNBinder¤Ï¡¢¥Ç¥¹¥¯¥È¥Ã¥×¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ë»÷¤¿¥æ¡¼¥¶¡¼ÂÎ¸³¤ò¤â¤¿¤é¤¹°Ù¤Ë¥¯¥é¥¤¥¢¥ó¥È¥µ¥¤¥É¤Î¥Ç¡¼¥¿¥Ğ¥¤¥ó¥Ç¥£¥ó¥°¤òÄó¶¡¤¹¤ë¤³¤È¤Ç¡¢½ÀÆğ¤Ê³«È¯´Ä¶­¤òÄó¶¡¤Ç¤­¤ë¤È¿®¤¸¤Æ¤¤¤Ş¤¹¡£¶½Ì£¤¬¤¢¤ì¤Ğ°Ê²¼¤Î¥¢¡¼¥Æ¥£¥¯¥ë¤ò¸æÍ÷¤¯¤À¤µ¤¤
+SNBinderã¯ã€ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã«ä¼¼ãŸãƒ¦ãƒ¼ã‚¶ãƒ¼ä½“é¨“ã‚’ã‚‚ãŸã‚‰ã™ç‚ºã«ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚µã‚¤ãƒ‰ã®ãƒ‡ãƒ¼ã‚¿ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã‚’æä¾›ã™ã‚‹ã“ã¨ã§ã€æŸ”è»Ÿãªé–‹ç™ºç’°å¢ƒã‚’æä¾›ã§ãã‚‹ã¨ä¿¡ã˜ã¦ã„ã¾ã™ã€‚èˆˆå‘³ãŒã‚ã‚Œã°ä»¥ä¸‹ã®ã‚¢ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ã‚’å¾¡è¦§ãã ã•ã„
 
 http://www.facebook.com/note.php?note_id=179569622077334
 
 .. Fruence (a groupware application for Facebook users) is the showcase application that demonstrates the user experience enabled by this architecture. 
-¤³¤Î¥é¥¤¥Ö¥é¥ê¤ò»ÈÍÑ¤·¤¿¤Ç¤â¥¢¥×¥ê "Fruence (a groupware application for Facebook users)" ¤òºîÀ®¤·¤Ş¤·¤¿¡£
+ã“ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ç”¨ã—ãŸã§ã‚‚ã‚¢ãƒ—ãƒª "Fruence (a groupware application for Facebook users)" ã‚’ä½œæˆã—ã¾ã—ãŸã€‚
 
 http://www.fruence.com
 
 
 .. 1. Initialization
-1. ½é´ü²½¤Ë¤Ä¤¤¤Æ
+1. åˆæœŸåŒ–ã«ã¤ã„ã¦
 ---------------------------------
 
 .. SNBinder requires JQuery. JQuery must be loaded before SNBinder. 
-SNBinder ¤ÏjQuery¤òÉ¬Í×¤È¤·¤Ş¤¹¡£¤Ş¤¿¡¢SNBinder¤ò¥í¡¼¥É¤¹¤ëÁ°¤ËÉ¬¤ºjQuery¤ò¥í¡¼¥É¤·¤Æ¤¯¤À¤µ¤¤¡£
+SNBinder ã¯jQueryã‚’å¿…è¦ã¨ã—ã¾ã™ã€‚ã¾ãŸã€SNBinderã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å‰ã«å¿…ãšjQueryã‚’ãƒ­ãƒ¼ãƒ‰ã—ã¦ãã ã•ã„ã€‚
 
 .. After loading both JQuery and SNBinder, the application should initialize SNBinder by calling it's init method like this::
-JQuery¤ÈSNBinder¤Î¥í¡¼¥É¤¬´°Î»¤·¤¿¤é¡¢"init"¥á¥½¥Ã¥É¤ò¸Æ¤Ó½Ğ¤·½é´ü²½¤ò¹Ô¤Ã¤Æ²¼¤µ¤¤ ::
+JQueryã¨SNBinderã®ãƒ­ãƒ¼ãƒ‰ãŒå®Œäº†ã—ãŸã‚‰ã€"init"ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—åˆæœŸåŒ–ã‚’è¡Œã£ã¦ä¸‹ã•ã„ ::
 
     $(document).ready(function() {
         SNBinder.init({});
     }
 
 .. The init method takes an optional parameter, which is described in the "Advanced Initialization" section below. 
-½é´ü²½¥á¥½¥Ã¥É¤Ï¡¢¤¤¤¯¤Ä¤«¤Î¥ª¥×¥·¥ç¥ó¤¬¤¢¤ê¤Ş¤¹¡£"Advanced Initialization"¥»¥¯¥·¥ç¥ó¤ò»²¹Í¤Ë¤·¤Æ¤¯¤À¤µ¤¤¡£
+åˆæœŸåŒ–ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€ã„ãã¤ã‹ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ãŒã‚ã‚Šã¾ã™ã€‚"Advanced Initialization"ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚’å‚è€ƒã«ã—ã¦ãã ã•ã„ã€‚
 
 
 .. 2. Binding
-2. ¥Ğ¥¤¥ó¥Ç¥£¥ó¥°
+2. ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°
 ---------------------------
 
 .. To bind an HTML template to a JavaScript object, you need to call SNBinder.bind() method. For example,::
-JavaScript¤òHTML template¤ËËä¤á¹ş¤à¤Ë¤Ï¡¢SNBinder.bind()¥á¥½¥Ã¥É¤ò¥³¡¼¥ë¤·¤Ş¤¹¡£::
+JavaScriptã‚’HTML templateã«åŸ‹ã‚è¾¼ã‚€ã«ã¯ã€SNBinder.bind()ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚³ãƒ¼ãƒ«ã—ã¾ã™ã€‚::
 
     var template = "<p>Hello $(.name)!</p>";
     var user = { "name":"Leonardo da Vinci" };
     $('.body').htm(SNBinder.bind(template, user));
 
 .. will replace the contents of the body tag with "<p>Hello Leonardo da Vinci!</p>". 
-¤³¤Î¥µ¥ó¥×¥ë¤Ç¤Ï¡¢<body>¥¿¥°Æâ¤Ë"<p>Hello Leonardo da Vinci!</p>" ¤¬É½¼¨¤µ¤ì¤Ş¤¹¡£
+ã“ã®ã‚µãƒ³ãƒ—ãƒ«ã§ã¯ã€<body>ã‚¿ã‚°å†…ã«"<p>Hello Leonardo da Vinci!</p>" ãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚
 
 .. If you want to apply the same template to multiple objects, it's more efficient to use a complied form. ::
-¤â¤·Ê£¿ô¤Î¥ª¥Ö¥¸¥§¥¯¥È¤òËä¤á¹ş¤ß¤¿¤¤¤Î¤Ê¤é¤Ğ,¥³¥ó¥Ñ¥¤¥ë¥Æ¥ó¥×¥ì¡¼¤ò»ÈÍÑ¤·¤ÆÊÑ¿ô¤òÅ¸³«¤·¤Ş¤¹¡£::
+ã‚‚ã—è¤‡æ•°ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’åŸ‹ã‚è¾¼ã¿ãŸã„ã®ãªã‚‰ã°,ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ã‚’ä½¿ç”¨ã—ã¦å¤‰æ•°ã‚’å±•é–‹ã—ã¾ã™ã€‚::
 
     var template = "<p>Hello $(.name)!</p>";
     var apply_template = SNBinder.compile(template);
@@ -66,18 +66,18 @@ JavaScript¤òHTML template¤ËËä¤á¹ş¤à¤Ë¤Ï¡¢SNBinder.bind()¥á¥½¥Ã¥É¤ò¥³¡¼¥ë¤·¤Ş¤¹¡£
 
 
 .. It is also possible to bind a template to an array of objects::
-¤â¤Á¤í¤ó¡¢ÇÛÎó¤Î¥Æ¥ó¥×¥ì¡¼¥È¤Ø¤ÎËä¹ş¤ß¤â²ÄÇ½¤Ç¤¹::
+ã‚‚ã¡ã‚ã‚“ã€é…åˆ—ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¸ã®åŸ‹è¾¼ã¿ã‚‚å¯èƒ½ã§ã™::
 
     var template = "<li>Hello $(.name)!</li>";
     var users = [
         { "name":"Leonardo da Vinci" }, 
         { "name":"Michelangelo di Lodovico Buonarroti Simoni" }, 
-        { "name":"LDonato di NiccolÃ² di Betto Bard" }
+        { "name":"LDonato di Niccolå˜† di Betto Bard" }
     ];
     $('.ul').htm(SNBinder.bind_rowset(template, users);
     
 .. Following patterns in the template will be replaced.::
-°Ê²¼¤ÎÍÍ¤Ê¡¢ÃÖ´¹¤â²ÄÇ½¤Ç¤¹::
+ä»¥ä¸‹ã®æ§˜ãªã€ç½®æ›ã‚‚å¯èƒ½ã§ã™::
 
     $(.foo) will be replaced by the value of property "foo" (escaped)
     $(_foo) will be replaced by the value of property "foo" (non-escaped)
@@ -85,13 +85,13 @@ JavaScript¤òHTML template¤ËËä¤á¹ş¤à¤Ë¤Ï¡¢SNBinder.bind()¥á¥½¥Ã¥É¤ò¥³¡¼¥ë¤·¤Ş¤¹¡£
 
 
 .. 3. Loading templates
-3. ¥Æ¥ó¥×¥ì¡¼¥È¤ÎÆÉ¤ß¹ş¤ß
+3. ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®èª­ã¿è¾¼ã¿
 -----------------------------------------------
 
 .. Although it is possible to hard-code HTML templates in JavaScript code like samples above, it is not a good
 .. practice to mix View and Controller (notice that JavaScript is activing as a Controller). SNBinder offers
 .. two helper functions that allows developers to load multiple templates in a single HTTP GET.::
-¥Ï¡¼¥É¥³¡¼¥É¤µ¤ì¤¿HTML¤ò¡¢¥Æ¥ó¥×¥ì¡¼¥ÈÆâ¤ËËä¤á¹ş¤ß¤¿¤¤¤³¤È¤â¤¢¤ë¤Ç¤·¤ç¤¦¡£¤·¤«¤·¡¢ViewÆâ¤Ë¥Ï¡¼¥É¥³¡¼¥É¤µ¤ì¤¿HTML¤¬Ëä¤á¹ş¤Ş¤ì¤ë¤³¤È¤Ï¤¢¤Ş¤ê¤¤¤¤¤³¤È¤Ç¤¢¤ê¤Ş¤»¤ó¡£¤½¤³¤Ç¡¢SNBinder¤Ç¤Ï¡¢2¤Ä¤Î¥Ø¥ë¥Ñ¡¼´Ø¿ô¤òÄó¶¡¤·¤Ş¤¹¡£¤³¤ì¤é¤ò»ÈÍÑ¤¹¤ë¤³¤È¤Ç¡¢viewÆâ¤ËÊÌÅÓhtml¥Õ¥¡¥¤¥ë¤òÆÉ¤ß¹ş¤ßÉ½¼¨¤¹¤ë¤³¤È¤¬²ÄÇ½¤Ë¤Ê¤ê¤Ş¤¹¡£
+ãƒãƒ¼ãƒ‰ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸHTMLã‚’ã€ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆå†…ã«åŸ‹ã‚è¾¼ã¿ãŸã„ã“ã¨ã‚‚ã‚ã‚‹ã§ã—ã‚‡ã†ã€‚ã—ã‹ã—ã€Viewå†…ã«ãƒãƒ¼ãƒ‰ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸHTMLãŒåŸ‹ã‚è¾¼ã¾ã‚Œã‚‹ã“ã¨ã¯ã‚ã¾ã‚Šã„ã„ã“ã¨ã§ã‚ã‚Šã¾ã›ã‚“ã€‚ãã“ã§ã€SNBinderã§ã¯ã€2ã¤ã®ãƒ˜ãƒ«ãƒ‘ãƒ¼é–¢æ•°ã‚’æä¾›ã—ã¾ã™ã€‚ã“ã‚Œã‚‰ã‚’ä½¿ç”¨ã™ã‚‹ã“ã¨ã§ã€viewå†…ã«åˆ¥é€”htmlãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã¿è¡¨ç¤ºã™ã‚‹ã“ã¨ãŒå¯èƒ½ã«ãªã‚Šã¾ã™ã€‚
 ::
 
     SNBinder.get_sections(url, callback)
@@ -115,11 +115,11 @@ The following code will load this template bundle, and performs the same view-da
 
 
 .. 4. Loading data via JSON over HTTP
-4. JSON¥Ç¡¼¥¿¤ÎHTTP·ĞÍ³¤ÎÆÉ¤ß¹ş¤ß (Loading data via JSON over HTTP)
+4. JSONãƒ‡ãƒ¼ã‚¿ã®HTTPçµŒç”±ã®èª­ã¿è¾¼ã¿ (Loading data via JSON over HTTP)
 ----------------------------------------------------------------------------------------------------
 
 .. SNBinder has a set of helper methods, which makes it easy to fetch data (Json objects) over HTTP. ::
-SNBinder¤Ï¡¢HTTP·ĞÍ³¤Ç´ÊÃ±¤ËJSON¥Ç¡¼¥¿¤òÆÉ¤ß¹ş¤ß¥à°Ù¤Î¥Ø¥ë¥Ñ¡¼´Ø¿ô¤òÄó¶¡¤·¤Ş¤¹¡£::
+SNBinderã¯ã€HTTPçµŒç”±ã§ç°¡å˜ã«JSONãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã¿ãƒ ç‚ºã®ãƒ˜ãƒ«ãƒ‘ãƒ¼é–¢æ•°ã‚’æä¾›ã—ã¾ã™ã€‚::
 
     SNBinder.get(url, params, isJson, callback, options);
     SNBinder.post(url, params, isJson, callback);
@@ -131,7 +131,7 @@ SNBinder¤Ï¡¢HTTP·ĞÍ³¤Ç´ÊÃ±¤ËJSON¥Ç¡¼¥¿¤òÆÉ¤ß¹ş¤ß¥à°Ù¤Î¥Ø¥ë¥Ñ¡¼´Ø¿ô¤òÄó¶¡¤·¤Ş¤¹¡£
     options: optional parameters to control the cache (default is {bypass_cache:false, cache_result:true} )
 
 .. For example, if "/user/info" returns the JSON object represents the user (such as {"name":"Leonardo da Vinci"}), the example in previous section will become something like this
-Îã¤Ç¤Ï¡¢"/user/info"¤Î¥ì¥¹¥İ¥ó¥¹¤¬JSON¥Ç¡¼¥¿¤Ç¡¢¥æ¡¼¥¶¥Ç¡¼¥¿¡Ê{"name":"¥À¥Ó¥ó¥Á"})¤¬¥ì¥¹¥İ¥ó¥¹¤µ¤ì¤Ş¤¹¡£°Ê²¼¤Î¤è¤¦¤Ë¤¹¤ë¤³¤È¤Ç¼èÆÀ¥Ç¡¼¥¿¤òbody¤ËËä¤á¹ş¤à¤³¤È¤¬²ÄÇ½¤Ç¤¹¡£
+ä¾‹ã§ã¯ã€"/user/info"ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹ãŒJSONãƒ‡ãƒ¼ã‚¿ã§ã€ãƒ¦ãƒ¼ã‚¶ãƒ‡ãƒ¼ã‚¿ï¼ˆ{"name":"ãƒ€ãƒ“ãƒ³ãƒ"})ãŒãƒ¬ã‚¹ãƒãƒ³ã‚¹ã•ã‚Œã¾ã™ã€‚ä»¥ä¸‹ã®ã‚ˆã†ã«ã™ã‚‹ã“ã¨ã§å–å¾—ãƒ‡ãƒ¼ã‚¿ã‚’bodyã«åŸ‹ã‚è¾¼ã‚€ã“ã¨ãŒå¯èƒ½ã§ã™ã€‚
 ::
 
     SNBinder.get_named_sections("/static/templates.htm", function(templates) {
@@ -142,18 +142,18 @@ SNBinder¤Ï¡¢HTTP·ĞÍ³¤Ç´ÊÃ±¤ËJSON¥Ç¡¼¥¿¤òÆÉ¤ß¹ş¤ß¥à°Ù¤Î¥Ø¥ë¥Ñ¡¼´Ø¿ô¤òÄó¶¡¤·¤Ş¤¹¡£
 
 
 .. 5. Cache control
-5. ¥­¥ã¥Ã¥·¥åÀ©¸æ
+5. ã‚­ãƒ£ãƒƒã‚·ãƒ¥åˆ¶å¾¡
 --------------------------------------
 
 .. SNBinder has an in-memory cache for data and templates fetched via get() method, and following methods allows the application to access and control the cache.:: 
-SNBinder¤Ç¤Ï¡¢¥á¥â¥êÆâ¤Ë¥­¥ã¥Ã¥·¥å¤µ¤ì¤¿¥Ç¡¼¥¿¤ä¥Æ¥ó¥×¥ì¡¼¥È¤òget()¥á¥½¥Ã¥É¤Ç¼èÆÀ¤¹¤ë¤³¤È¤¬²ÄÇ½¤Ç¤¹¡£¤Ş¤¿¡¢¤½¤ì¤é¤ÎÍøÍÑ¤òÀ©¸æ¤¹¤ë¤³¤È¤â²ÄÇ½¤Ç¤¹::
+SNBinderã§ã¯ã€ãƒ¡ãƒ¢ãƒªå†…ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã‚„ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’get()ãƒ¡ã‚½ãƒƒãƒ‰ã§å–å¾—ã™ã‚‹ã“ã¨ãŒå¯èƒ½ã§ã™ã€‚ã¾ãŸã€ãã‚Œã‚‰ã®åˆ©ç”¨ã‚’åˆ¶å¾¡ã™ã‚‹ã“ã¨ã‚‚å¯èƒ½ã§ã™::
 
     flush_all(): flush all the cached data
     flush(url, params): flush associated with url + url parameters
     
 
 .. 6. Advanced Initialization
-6. ½é´ü²½¡Ê¥¢¥É¥Ğ¥ó¥¹¡Ë
+6. åˆæœŸåŒ–ï¼ˆã‚¢ãƒ‰ãƒãƒ³ã‚¹ï¼‰
 -------------------------------------------------
 
 If the application calls SNBinder.get or SNBinder.post with isJson=true and the server returns an JSON object 

@@ -3,11 +3,11 @@ about SNBinder
 
 
 .. SNBinder is a client-side template engine implemented in JavaScript. Just like server-side template engines, 
-..it binds a view (HTML template) to a data (JavaScript object) and generate an HTML text. 
+.. it binds a view (HTML template) to a data (JavaScript object) and generate an HTML text. 
 SNBinder はJavaScriptで実装されたクライアントサイドのテンプレートエンジンです。サーバーサイドのテンプレートエンジンと似ています。view(HTML template)がデータを用いてHTML txetを生成します。
 
 .. 0. Design Principle and Sample Application
-..0. デザイン原理とサンプルアプリケーション
+0. デザイン原理とサンプルアプリケーション
 ------------------------------------------------------
 
 .. I developed SNBinder with a belief that the client-side data-binding gives a great flexibility to developers who want to offer a "desktop-application-like" user experience. Read the following article if you are interested in the architecture behind this effort. 

@@ -97,11 +97,15 @@ JavaScriptをHTML templateに埋め込むには、SNBinder.bind()メソッドを
     SNBinder.get_sections(url, callback)
     SNBinder.get_named_sections(url, callback)
 
-The load_sections method loads a template bundle (an array of templates joined with "{%}") from the specified URL, and calls the callback function with an array of templates. 
+.. The load_sections method loads a template bundle (an array of templates joined with "{%}") from the specified URL, and calls the callback function with an array of templates. 
+
+これから訳
 
 The load_sections method loads a named template bundle (set of named templates, where each name is specified with "{%}...{%}"), 
 and calls the callback function with a dictionary of templates. For example, assume the named template bundle has follwing
-contents (a single template named "main") and accessible at "/static/template.htm"::
+contents (a single template named "main") and accessible at "/static/template.htm"
+
+::
 
     {%}main{%}
     <p>Hello $(.name)!</p>

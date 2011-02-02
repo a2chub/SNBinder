@@ -136,7 +136,7 @@ SNBinderは、HTTP経由で簡単にJSONデータを読み込む為の補助関�
     options: optional parameters to control the cache (default is {bypass_cache:false, cache_result:true} )
 
 .. For example, if "/user/info" returns the JSON object represents the user (such as {"name":"Leonardo da Vinci"}), the example in previous section will become something like this
-例えば、"/user/info"のレスポンスがユーザデータ（例えば{"name":"Leonardo da vinci"})のJSONオブジェクトだったら、全セクションの例は下記のように記述することができます。
+例えば、"/user/info"のレスポンスがユーザデータ（例えば{"name":"Leonardo da vinci"})のJSONオブジェクトだったら、前セクションの例は下記のように記述することができます。
 ::
 
     SNBinder.get_named_sections("/static/templates.htm", function(templates) {
@@ -164,5 +164,5 @@ SNBinderでは、メモリ内にキャッシュされたデータやテンプレ
 .. If the application calls SNBinder.get or SNBinder.post with isJson=true and the server returns an JSON object 
 .. that has the property "login_required" with true in it, SNBinder calls the "login" function specified in
 .. the optional parameter to the SNBinder.init() method. 
-アプリケーションがSNBinder.getやSNBinder.postをコール(isJson=trueでありサーバーが"login_required"プロパティtrueでJSONオブジェクトを返す状態とする)するとき、SNBinderはSNBinder.init()のオプションパラメータで特定される"login"関数をコールする。
+アプリケーションがSNBinder.getやSNBinder.postをコール(isJson=trueであり、且つサーバーが"login_required"プロパティtrueでJSONオブジェクトを返す状態とする)するとき、SNBinderはSNBinder.init()のオプションパラメータで特定される"login"関数をコールします。
 
